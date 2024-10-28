@@ -1,1 +1,31 @@
 /* styling for NavBar here */
+
+.NavBar-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* sticky header */
+    position: sticky;
+    top: 0px;
+    background-color: blanchedalmond;
+    height: 50px;
+    border: white solid;
+}
+
+/* Logo */
+.header_logo img {
+    height: 50px;
+    width: 50px;
+}
+
+.NavBar-section nav {
+    width: 300px;
+}
+
+.NavBar-section nav ul {
+    display: flex;
+    flex-direction: row;
+    /*by defult*/
+    justify-content: space-between;
+    list-style: none;
+}

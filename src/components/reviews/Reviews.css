@@ -1,0 +1,11 @@
+/* [ Customer Reviews Section ]*/
+#reviews {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.review_conten {
+    margin-top: 20px;
+}
