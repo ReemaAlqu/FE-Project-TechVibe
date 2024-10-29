@@ -10,33 +10,35 @@ import Twitter from "../../images/Twitter.png";
 
 export default function Footer() {
   return (
-    <div className="Footer-section">
-      <div>
+    <div>
+      <div className="Footer-section">
+        <div>
+          <nav>
+            <ul>
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+              <li>Contact Us</li>
+            </ul>
+          </nav>
+        </div>
+
+        <div className="social-media">
+          <a href=" https://www.facebook.com" target="_blank">
+            <img src={Facebook} alt="Facebook" />
+          </a>
+
+          <a href="https://www.instagram.com" target="_blank">
+            <img src={Instagram} alt="Instagram" />
+          </a>
+
+          <a href="https://x.com/" target="_blank">
+            <img src={Twitter} alt="Twitter" />
+          </a>
+        </div>
+      </div>
+
+      <div className="rights">
         <p>2024 Tech Vibe. All rights reserved.</p>
-      </div>
-
-      <div>
-        <nav>
-          <ul>
-            <li>Privacy Policy</li>
-            <li>Terms of Service</li>
-            <li>Contact Us</li>
-          </ul>
-        </nav>
-      </div>
-
-      <div class="social-media">
-        <a href=" https://www.facebook.com" target="_blank">
-          <img src={Facebook} alt="Facebook" />
-        </a>
-
-        <a href="https://www.instagram.com" target="_blank">
-          <img src={Instagram} alt="Instagram" />
-        </a>
-
-        <a href="https://x.com/" target="_blank">
-          <img src={Twitter} alt="Twitter" />
-        </a>
       </div>
     </div>
   );
