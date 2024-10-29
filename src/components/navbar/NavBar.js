@@ -4,6 +4,7 @@ import React from "react";
 import "./NavBar.css";
 // Import the images
 import myLogo from "../../images/myLogo.png";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
@@ -14,9 +15,9 @@ export default function NavBar() {
 
       <nav>
         <ul>
-          <li>Home</li>
-          <li>Products</li>
-          <li>About Us</li>
+          <Link to="/home">Home</Link>
+          <Link to="/products">Products</Link>
+          <Link to="/about-us">About Us</Link>
         </ul>
       </nav>
     </div>
