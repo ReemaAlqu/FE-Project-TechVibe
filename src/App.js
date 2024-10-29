@@ -5,12 +5,6 @@ import LinearProgress from "@mui/material/LinearProgress";
 
 import "./App.css";
 import error404 from "./images/error404.jpg";
-import NavBar from "./components/navbar/NavBar";
-import Footer from "./components/footer/Footer";
-import Products from "./components/products/Products";
-import Hero from "./components/hero/Hero";
-import Reviews from "./components/reviews/Reviews";
-import Newsletter from "./components/newsletter/Newsletter";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AboutUsPage from "./pages/AboutUsPage";
@@ -18,6 +12,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import ProductsPage from "./pages/ProductsPage";
 import LayOut from "./components/layout/LayOut";
 import SingleProductPage from "./pages/SingleProductPage";
+import WishListPage from "./pages/WishListPage";
 
 function App() {
   const url = "https://fakestoreapi.com/products";
@@ -25,6 +20,11 @@ function App() {
   const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [userInput, setUserInput] = useState("");
+  const [wishList, setWishList] = useState([]);
+
+  console.log(wishList, "wishList");
 
   function getData() {
     // axios syntax:
@@ -81,11 +81,23 @@ function App() {
         },
         {
           path: "/products",
-          element: <ProductsPage productsList={productsList} />,
+          element: (
+            <ProductsPage
+              productsList={productsList}
+              setUserInput={setUserInput}
+              userInput={userInput}
+              wishList={wishList}
+              setWishList={setWishList}
+            />
+          ),
         },
         {
           path: "/products/:productId",
           element: <SingleProductPage />,
+        },
+        {
+          path: "/wish-list",
+          element: <WishListPage wishList={wishList} />,
         },
         {
           path: "*",

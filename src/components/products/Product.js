@@ -2,17 +2,26 @@ import React from "react";
 import "./Product.css";
 import { Link } from "react-router-dom";
 
-export default function (prop) {
+export default function Product(prop) {
+  const { product, wishList, setWishList } = prop;
+
+  function addToFav(product) {
+    
+    setWishList([...wishList, product]);
+  }
+  
+
   return (
-    <div key={prop.product.id}>
+    <div key={product.id}>
       <div>
-        {prop.product.id}. {prop.product.title} - price: (${prop.product.price})
+        {product.title} - price: (${product.price})
       </div>
-      <img src={prop.product.image} alt={prop.product.title} />
+      <img src={product.image} alt={product.title} />
       <br />
-      <Link to={`${prop.product.id}`}>
+      <Link to={`${product.id}`}>
         <button>More Details...</button>
       </Link>
+      <button onClick={() => addToFav(product)}>Add to fav </button>
     </div>
   );
 }

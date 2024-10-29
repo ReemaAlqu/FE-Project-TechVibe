@@ -17,6 +17,7 @@ export default function NavBar() {
         <ul>
           <Link to="/home">Home</Link>
           <Link to="/products">Products</Link>
+          <Link to="/wish-list">Wish List</Link>
           <Link to="/about-us">About Us</Link>
         </ul>
       </nav>
