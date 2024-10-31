@@ -6,10 +6,12 @@ export default function Product(prop) {
   const { product, wishList, setWishList } = prop;
 
   function addToFav(product) {
-    
-    setWishList([...wishList, product]);
+    const isInclude = wishList.some((item) => item.id === product.id);
+
+    if (!isInclude) {
+      setWishList([...wishList, product]);
+    }
   }
-  
 
   return (
     <div key={product.id}>

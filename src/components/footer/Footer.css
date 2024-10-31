@@ -18,7 +18,16 @@
     list-style: none;
 }
 
-.Footer-section .social-media a img {
+.Footer-section .social-media {
+    display: flex;
+        flex-direction: row;
+        /*by defult*/
+        justify-content: space-between;
+        list-style: none;
+        gap: 10px;
+
+}
+.Footer-section .social-media img {
     height: 25px;
     width: 25px;
 }

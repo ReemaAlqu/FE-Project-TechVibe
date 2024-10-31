@@ -13,6 +13,8 @@ import ProductsPage from "./pages/ProductsPage";
 import LayOut from "./components/layout/LayOut";
 import SingleProductPage from "./pages/SingleProductPage";
 import WishListPage from "./pages/WishListPage";
+import CartPage from "./pages/CartPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   const url = "https://fakestoreapi.com/products";
@@ -22,9 +24,10 @@ function App() {
   const [error, setError] = useState(null);
 
   const [userInput, setUserInput] = useState("");
+
   const [wishList, setWishList] = useState([]);
 
-  console.log(wishList, "wishList");
+  // ***********************************************************************************
 
   function getData() {
     // axios syntax:
@@ -65,7 +68,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <LayOut />,
+      element: <LayOut wishList={wishList} />,
       children: [
         {
           index: true,
@@ -74,10 +77,6 @@ function App() {
         {
           path: "/home",
           element: <HomePage />,
-        },
-        {
-          path: "/about-us",
-          element: <AboutUsPage />,
         },
         {
           path: "/products",
@@ -96,8 +95,16 @@ function App() {
           element: <SingleProductPage />,
         },
         {
+          path: "/cart",
+          element: <CartPage />,
+        },
+        {
           path: "/wish-list",
           element: <WishListPage wishList={wishList} />,
+        },
+        {
+          path: "/login",
+          element: <LoginPage />,
         },
         {
           path: "*",

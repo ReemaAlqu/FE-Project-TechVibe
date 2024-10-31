@@ -18,6 +18,7 @@ export default function Footer() {
               <li>Privacy Policy</li>
               <li>Terms of Service</li>
               <li>Contact Us</li>
+              <li>About Us</li>
             </ul>
           </nav>
         </div>
