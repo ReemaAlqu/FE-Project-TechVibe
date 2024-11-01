@@ -1,4 +1,5 @@
 import React from "react";
+import TextField from "@mui/material/TextField";
 
 export default function Form(prop) {
   const { setUserInput } = prop;
@@ -9,11 +10,17 @@ export default function Form(prop) {
 
   return (
     <div>
-      <h1>Form</h1>
-      <form>
+      {/* <form>
         <label>Please Enter product name </label>
         <input type="text" onChange={onChangeHandler} />
-      </form>
+      </form> */}
+
+      <TextField
+        id="standard-basic"
+        label="Search a product title"
+        variant="standard"
+        onChange={onChangeHandler}
+      />
     </div>
   );
 }

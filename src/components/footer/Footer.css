@@ -4,6 +4,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 
 .Footer-section nav {

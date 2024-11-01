@@ -1,14 +1,13 @@
 import React from "react";
-import Hero from "../components/hero/Hero";
-import Newsletter from "../components/newsletter/Newsletter";
-import Reviews from "../components/reviews/Reviews";
 
-export default function HomePage() {
+import Home from "../components/home/Home";
+
+export default function HomePage(prop) {
+  const { response } = prop;
   return (
     <div>
-      <Hero />
-      <Newsletter />
-      <Reviews />
+      <p>Response frome backend: {response}</p>
+      <Home />
     </div>
   );
 }

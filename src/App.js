@@ -22,48 +22,81 @@ function App() {
   const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const [userInput, setUserInput] = useState("");
-
   const [wishList, setWishList] = useState([]);
 
   // ***********************************************************************************
 
-  function getData() {
+  // Add the ( LOGIC ) to send request or to get data from the ( SERVER )
+
+  // 1-the FE need to know the (url)(Address)(Endpoint)
+  const url1 = "http://localhost:5125";
+  const productUrl = "http://localhost:5125/api/v1/Products";
+
+  const [response, setResponse] = useState("");
+
+  // 2- when i send the request to the BE I need to know the example :
+  // method: get
+  // body: non
+  // rersponse: Server is running
+
+  //axios
+  function getDataFromServer() {
     // axios syntax:
+
+    // setProductsList(response.data);
+    // setLoading(false);
+
     axios
-      .get(url)
+      .get(url1)
       .then((response) => {
-        setProductsList(response.data);
-        setLoading(false);
+        setResponse(response.data);
       })
       .catch((error) => {
-        setError("Fail to fetch data");
-        setLoading(false);
+        console.log("error");
       });
   }
 
+  // setError("Fail to fetch data");
+  // setLoading(false);
+
+  // function getData() {
+  //   // axios syntax:
+  //   axios
+  //     .get(url)
+  //     .then((response) => {
+  //       setProductsList(response.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       setError("Fail to fetch data");
+  //       setLoading(false);
+  //     });
+  // }
+
   useEffect(() => {
-    getData();
+    // getData();
+    getDataFromServer();
   }, []);
+  console.log(response, "response from BE");
 
-  if (loading === true) {
-    return (
-      <div>
-        <Box sx={{ width: "100%" }}>
-          <LinearProgress />
-        </Box>
-      </div>
-    );
-  }
+  // if (loading === true) {
+  //   return (
+  //     <div>
+  //       <Box sx={{ width: "100%" }}>
+  //         <LinearProgress />
+  //       </Box>
+  //     </div>
+  //   );
+  // }
 
-  if (error) {
-    return (
-      <div>
-        <img className="error404" src={error404} alt="404" />
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div>
+  //       <img className="error404" src={error404} alt="404" />
+  //     </div>
+  //   );
+  // }
 
   const router = createBrowserRouter([
     {
@@ -71,8 +104,8 @@ function App() {
       element: <LayOut wishList={wishList} />,
       children: [
         {
-          index: true,
-          element: <HomePage></HomePage>,
+          path: "/",
+          element: <HomePage response={response} />,
         },
         {
           path: "/home",

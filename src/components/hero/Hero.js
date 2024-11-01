@@ -1,6 +1,9 @@
 import React from "react";
-import "./Hero.css";
+
 import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+
+import "./Hero.css";
 export default function Hero() {
   return (
     <div className="hero-section">
@@ -9,7 +12,12 @@ export default function Hero() {
         <h3>Discover the Latest in Tech</h3>
         <p>Your one-stop shop for cutting-edge devices and gadgets.</p>
         <Link to="/products">
-          <button class="btn">Shop Now</button>
+          <Button
+            variant="outlined"
+            style={{ color: "black", borderColor: "black" }}
+          >
+            Shop Now
+          </Button>
         </Link>
       </div>
     </div>

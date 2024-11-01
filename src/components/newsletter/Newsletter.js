@@ -1,5 +1,6 @@
-import React from 'react'
+import React from "react";
 import "./Newsletter.css";
+import TextField from "@mui/material/TextField";
 
 export default function Newsletter() {
   return (
@@ -13,8 +14,8 @@ export default function Newsletter() {
       </article>
 
       <form>
-        <label>Email: </label>
-        <input type="email" name="Enter your email address" />
+        <TextField id="standard-basic" label="Email:" variant="standard" />
+        <br />
         <button class="btn">Subscribe</button>
       </form>
     </div>

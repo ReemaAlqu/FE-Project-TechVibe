@@ -3,22 +3,5 @@ img {
     width: 90px;
     height: 90px;
     gap: 5px
-}
-button {
-    background-color: rgb(232, 223, 223);
-    border: 1px solid;
-    border-radius: 8px;
-    font-size: 12px;
-    cursor: pointer;
-    padding: 3px;
-    transition: background-color 0.1s ease-in;
-}
-
-button:hover {
-    background-color: rgb(216, 195, 166);
-}
-
-button:active {
-    scale: 0.80;
-    border: grey;
+    
 }

@@ -6,7 +6,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    
 }
+
 
 .title {
     margin-bottom: 10px;
@@ -33,21 +36,3 @@
     }
 }
 
-.btn {
-    background-color: rgb(232, 223, 223);
-    border: 1px solid;
-    border-radius: 8px;
-    font-size: 12px;
-    cursor: pointer;
-    padding: 3px;
-    transition: background-color 0.1s ease-in;
-}
-
-.btn:hover {
-    background-color: rgb(216, 195, 166);
-}
-
-.btn:active {
-    scale: 0.80;
-    border: grey;
-}

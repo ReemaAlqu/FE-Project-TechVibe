@@ -16,7 +16,6 @@ export default function Products(prop) {
   }
   return (
     <div>
-      <h1>Product List</h1>
       <div className="product-list">
         {products.map((product) => {
           return (
