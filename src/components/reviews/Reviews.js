@@ -6,7 +6,7 @@ export default function Reviews() {
     <div id="reviews">
       <article>
         <h2>What Our Customers Are Saying?</h2>
-        <div class="review_conten">
+        <div className="review_conten">
           <p>
             "Tech Vibe has the best products! I’m always impressed by the
             quality and customer service." - Jane Doe

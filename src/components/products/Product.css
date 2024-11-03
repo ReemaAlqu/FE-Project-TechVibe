@@ -1,4 +1,10 @@
 /* product styling here */
+
+.product-section{
+    padding: 10px;
+
+}
+
 img {
     width: 90px;
     height: 90px;

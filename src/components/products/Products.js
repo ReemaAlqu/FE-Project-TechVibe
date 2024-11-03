@@ -2,23 +2,23 @@ import React from "react";
 
 import "./Products.css";
 import Product from "./Product";
+import ProductsPagination from "./ProductsPagination";
 
 export default function Products(prop) {
-  const {  userInput, wishList, setWishList } = prop;
+  const {
+    productsList,
+    wishList,
+    setWishList,
+    totalCount,
+    page,
+    handleChange,
+  } = prop;
 
-  // const result = productsList.filter((product) =>
-  //   product.title.toLocaleLowerCase().includes(userInput.toLocaleLowerCase())
-  // );
-
-  // let products = productsList;
-  // if (userInput) {
-  //   products = result;
-  // }
   return (
     <div>
-      <h1>This is the product page</h1>
-      {/* <div className="product-list">
-        {products.map((product) => {
+      <h1>Product List</h1>
+      <div className="product-list">
+        {productsList.map((product) => {
           return (
             <Product
               key={product.id}
@@ -28,7 +28,12 @@ export default function Products(prop) {
             />
           );
         })}
-      </div> */}
+      </div>
+      <ProductsPagination
+        totalCount={totalCount}
+        page={page}
+        handleChange={handleChange}
+      />
     </div>
   );
 }

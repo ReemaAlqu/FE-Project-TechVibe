@@ -16,7 +16,7 @@ export default function Newsletter() {
       <form>
         <TextField id="standard-basic" label="Email:" variant="standard" />
         <br />
-        <button class="btn">Subscribe</button>
+        <button className="btn">Subscribe</button>
       </form>
     </div>
   );

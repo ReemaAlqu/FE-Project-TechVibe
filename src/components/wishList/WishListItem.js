@@ -5,9 +5,9 @@ export default function WishListItem(prop) {
   return (
     <div>
       <div>
-        {item.title} - price: (${item.price})
+        Name: {item.name} - price: (${item.price})
       </div>
-      <img src={item.image} alt={item.title} />
+      <img src={item.imageUrl} alt={item.name} />
     </div>
   );
 }

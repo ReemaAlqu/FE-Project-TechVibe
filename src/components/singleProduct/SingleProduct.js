@@ -55,10 +55,10 @@ export default function SingleProduct() {
     <div>
       <h1>SingleProductPage</h1>
       <div>
-        {product.title} - price: (${product.price})
+        {product.name} - price: (${product.price})
       </div>
       <p>Description: {product.description}</p>
-      <img src={product.image} alt={product.title} />
+      <img src={product.imageUrl} alt={product.name} />
       <br />
     </div>
   );
