@@ -17,13 +17,17 @@ import CartPage from "./pages/CartPage";
 import LoginPage from "./pages/LoginPage";
 
 function App() {
-  const url = "https://fakestoreapi.com/products";
-
-  const [productsList, setProductsList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [wishList, setWishList] = useState([]);
+
+  const [productResponse, setProductResponse] = useState({
+    products: [],
+    totalCount: 0,
+  });
+
+  // const url = "https://fakestoreapi.com/products"; the old URL for fake api
 
   // ***********************************************************************************
 
@@ -31,34 +35,33 @@ function App() {
 
   // 1-the FE need to know the (url)(Address)(Endpoint)
   const url1 = "http://localhost:5125";
-  const productUrl = "http://localhost:5125/api/v1/Products";
+  const productUrl =
+    "http://localhost:5125/api/v1/Products?Limit=2&Offset=2&Filter.MinPrice=0&Filter.MaxPrice=10000";
 
   const [response, setResponse] = useState("");
 
   // 2- when i send the request to the BE I need to know the example :
   // method: get
   // body: non
-  // rersponse: Server is running
+  // rersponse:
 
   //axios
   function getDataFromServer() {
     // axios syntax:
 
-    // setProductsList(response.data);
-    // setLoading(false);
-
     axios
-      .get(url1)
+      .get(productUrl)
       .then((response) => {
-        setResponse(response.data);
+        console.log(response);
+        console.log(response.data);
+        setProductResponse(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log("error");
+        setLoading(false);
       });
   }
-
-  // setError("Fail to fetch data");
-  // setLoading(false);
 
   // function getData() {
   //   // axios syntax:
@@ -75,10 +78,11 @@ function App() {
   // }
 
   useEffect(() => {
-    // getData();
     getDataFromServer();
   }, []);
   console.log(response, "response from BE");
+
+  console.log(productResponse, "this is from App");
 
   // if (loading === true) {
   //   return (
@@ -115,7 +119,8 @@ function App() {
           path: "/products",
           element: (
             <ProductsPage
-              productsList={productsList}
+              // productResponse={productResponse}
+              // productsList={productsList}
               setUserInput={setUserInput}
               userInput={userInput}
               wishList={wishList}

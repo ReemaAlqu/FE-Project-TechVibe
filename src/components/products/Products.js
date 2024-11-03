@@ -4,19 +4,20 @@ import "./Products.css";
 import Product from "./Product";
 
 export default function Products(prop) {
-  const { productsList, userInput, wishList, setWishList } = prop;
+  const {  userInput, wishList, setWishList } = prop;
 
-  const result = productsList.filter((product) =>
-    product.title.toLocaleLowerCase().includes(userInput.toLocaleLowerCase())
-  );
+  // const result = productsList.filter((product) =>
+  //   product.title.toLocaleLowerCase().includes(userInput.toLocaleLowerCase())
+  // );
 
-  let products = productsList;
-  if (userInput) {
-    products = result;
-  }
+  // let products = productsList;
+  // if (userInput) {
+  //   products = result;
+  // }
   return (
     <div>
-      <div className="product-list">
+      <h1>This is the product page</h1>
+      {/* <div className="product-list">
         {products.map((product) => {
           return (
             <Product
@@ -27,7 +28,7 @@ export default function Products(prop) {
             />
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 }
