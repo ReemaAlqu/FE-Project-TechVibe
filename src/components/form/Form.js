@@ -10,14 +10,9 @@ export default function Form(prop) {
 
   return (
     <div>
-      {/* <form>
-        <label>Please Enter product name </label>
-        <input type="text" onChange={onChangeHandler} />
-      </form> */}
-
       <TextField
         id="standard-basic"
-        label="Search a product title"
+        label="Search a product Name"
         variant="standard"
         onChange={onChangeHandler}
       />

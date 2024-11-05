@@ -42,7 +42,6 @@ export default function Product(prop) {
       <br />
 
       <Link to={`${product.id}`}>
-        <button>More Details...</button>
         <MoreHorizIcon sx={{ color: "black" }} />
       </Link>
 

@@ -29,6 +29,9 @@ function App() {
   const [error, setError] = useState(null);
   const [userInput, setUserInput] = useState("");
   const [wishList, setWishList] = useState([]);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(10000);
+  console.log(minPrice, maxPrice, " Price.....");
 
   // ***********************************************************************************
   // const url = "https://fakestoreapi.com/products"; the old URL for fake api
@@ -36,10 +39,18 @@ function App() {
   let limit = 3;
   let offset = (page - 1) * limit;
 
-  function getUrl(userInput) {
-    let productUrl = `http://localhost:5125/api/v1/Products?Limit=${limit}&Offset=${offset}&Search=${userInput}&Filter.MinPrice=0&Filter.MaxPrice=10000`;
+  function getUrl(userInput, minPrice, maxPrice) {
+    let productUrl = `http://localhost:5125/api/v1/Products?Limit=${limit}&Offset=${offset}`;
     if (userInput) {
-      productUrl += `&Search=${userInput}`;
+      productUrl += `&search=${userInput}`;
+    }
+
+    if (minPrice) {
+      productUrl += `&minPrice=${minPrice}`;
+    }
+
+    if (maxPrice) {
+      productUrl += `&maxPrice=${maxPrice}`;
     }
     return productUrl;
   }
@@ -47,9 +58,8 @@ function App() {
   function getDataFromServer() {
     // axios syntax:
     axios
-      .get(getUrl(userInput))
+      .get(getUrl(userInput, minPrice, maxPrice))
       .then((response) => {
-        console.log(response);
         setProductResponse(response.data);
         setLoading(false);
       })
@@ -62,7 +72,7 @@ function App() {
 
   useEffect(() => {
     getDataFromServer();
-  }, [offset, limit, userInput]);
+  }, [offset, limit, userInput, minPrice, maxPrice]);
 
   if (loading === true) {
     return (
@@ -107,6 +117,8 @@ function App() {
               totalCount={productResponse.totalCount}
               page={page}
               handleChange={handleChange}
+              setMinPrice={setMinPrice}
+              setMaxPrice={setMaxPrice}
             />
           ),
         },
