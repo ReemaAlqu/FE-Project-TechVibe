@@ -56,10 +56,12 @@ export default function SingleProduct() {
     <div>
       <h1>SingleProductPage</h1>
       <div>
-        {productDetail.name} - price: (${productDetail.price})
+        Name: {productDetail.name} - price: (${productDetail.price})
       </div>
       <p>Description: {productDetail.description}</p>
+      <p>Category: {productDetail.category.name}</p>
       <img src={productDetail.imageUrl} alt={productDetail.name} />
+      <br />
       <Link to="/products">
         <Button
           variant="outlined"

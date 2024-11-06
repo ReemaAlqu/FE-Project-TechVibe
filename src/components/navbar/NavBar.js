@@ -24,19 +24,22 @@ export default function NavBar(prop) {
           <Link to="/home">
             <HomeIcon sx={{ color: "white" }} />
           </Link>
+
           <Link to="/products">
             <DevicesOtherIcon sx={{ color: "white" }} />
           </Link>
+
           <Link to="/cart">
             <ShoppingCartIcon sx={{ color: "white" }} />
           </Link>
+
           <Badge badgeContent={arrayLength} color="primary">
             <Link to="/wish-list">
               <FavoriteIcon sx={{ color: "white" }} />
             </Link>
           </Badge>
 
-          <Link to="/login">
+          <Link to="/register">
             <PersonIcon sx={{ color: "white" }} />
           </Link>
         </ul>

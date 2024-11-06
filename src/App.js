@@ -13,7 +13,8 @@ import LayOut from "./components/layout/LayOut";
 import SingleProductPage from "./pages/SingleProductPage";
 import WishListPage from "./pages/WishListPage";
 import CartPage from "./pages/CartPage";
-import LoginPage from "./pages/LoginPage";
+import UserRegister from "./components/user/UserRegister";
+import UserLogin from "./components/user/UserLogin";
 
 function App() {
   // States
@@ -31,7 +32,6 @@ function App() {
   const [wishList, setWishList] = useState([]);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(10000);
-  console.log(minPrice, maxPrice, " Price.....");
 
   // ***********************************************************************************
   // const url = "https://fakestoreapi.com/products"; the old URL for fake api
@@ -135,8 +135,12 @@ function App() {
           element: <WishListPage wishList={wishList} />,
         },
         {
+          path: "/register",
+          element: <UserRegister />,
+        },
+        {
           path: "/login",
-          element: <LoginPage />,
+          element: <UserLogin />,
         },
         {
           path: "*",
