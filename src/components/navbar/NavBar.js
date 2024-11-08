@@ -39,7 +39,7 @@ export default function NavBar(prop) {
             </Link>
           </Badge>
 
-          <Link to="/register">
+          <Link to="/login">
             <PersonIcon sx={{ color: "white" }} />
           </Link>
         </ul>

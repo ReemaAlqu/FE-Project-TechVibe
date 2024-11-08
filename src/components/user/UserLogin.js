@@ -9,8 +9,10 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function UserLogin() {
+export default function UserLogin(prop) {
+  const { getUserData } = prop;
   // Password part from MUI
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -38,6 +40,7 @@ export default function UserLogin() {
     setUerLogIn({ ...userLogin, password: event.target.value });
   }
 
+  const navigate = useNavigate();
   // onclick
   function logInUser() {
     const userUrlLogIn = " http://localhost:5125/api/v1/User/signIn";
@@ -52,15 +55,24 @@ export default function UserLogin() {
           localStorage.setItem("token", response.data);
         }
       })
+      .then(() => getUserData())
+      .then(() => navigate("/profile"))
       .catch((error) => {
         console.log(error);
+        if (error.response.status === 400) {
+          alert(error.response.data.message);
+        }
+        if (error.response.status === 401) {
+          alert(error.response.data.message);
+        }
       });
   }
 
   return (
     <div>
       <h1>UserLogin</h1>
-
+      <p>Reema@gmail.com</p>
+      <p>Reema@2024</p>
       <TextField
         id="emailAddress"
         label="Your Email:"
@@ -102,6 +114,18 @@ export default function UserLogin() {
       >
         LogIn ...
       </Button>
+
+      <div>
+        <h1> Dont have an account? </h1>
+        <Link to="/register">
+          <Button
+            variant="outlined"
+            style={{ color: "black", borderColor: "black" }}
+          >
+            Create an account
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }

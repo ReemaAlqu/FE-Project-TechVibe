@@ -15,6 +15,9 @@ import WishListPage from "./pages/WishListPage";
 import CartPage from "./pages/CartPage";
 import UserRegister from "./components/user/UserRegister";
 import UserLogin from "./components/user/UserLogin";
+import UserProfile from "./components/user/UserProfile";
+import ProtectedRoute from "./components/user/ProtectedRoute";
+import Dashboard from "./components/dashBoard/DashBoard";
 
 function App() {
   // States
@@ -56,7 +59,6 @@ function App() {
   }
 
   function getDataFromServer() {
-    // axios syntax:
     axios
       .get(getUrl(userInput, minPrice, maxPrice))
       .then((response) => {
@@ -69,14 +71,47 @@ function App() {
         setLoading(false);
       });
   }
-
+  // with fetch data and render it we need also to use another hook from react (useEffect) : it's allow us to invoke the function and run it to get the data ONE time if the value of the dependency is Empty , and if dependency have any value change dynamically it gonna run the function get data to render it one more time
   useEffect(() => {
     getDataFromServer();
   }, [offset, limit, userInput, minPrice, maxPrice]);
 
+  /******************************************************************************************************/
+  // Get user data
+  const [userData, setUserData] = useState(null);
+  const [isUserDataLoading, setIsUserDataLoading] = useState(true);
+
+  function getUserData() {
+    setIsUserDataLoading(true);
+    // token from local storage
+    const token = localStorage.getItem("token");
+    axios
+      .get("http://localhost:5125/api/v1/User/auth", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setUserData(response.data);
+        setIsUserDataLoading(false);
+      })
+      .catch((error) => {
+        setIsUserDataLoading(false);
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  // protected route
+  let isAuthenticated = userData ? true : false;
+
   if (loading === true) {
     return (
       <div>
+        {/* <h1>Loading ..... </h1> */}
         <Box sx={{ width: "100%" }}>
           <LinearProgress />
         </Box>
@@ -87,6 +122,7 @@ function App() {
   if (error) {
     return (
       <div>
+        {/* <div>{error.message}</div> */}
         <img className="error404" src={error404} alt="404" />
       </div>
     );
@@ -97,10 +133,6 @@ function App() {
       path: "/",
       element: <LayOut wishList={wishList} />,
       children: [
-        {
-          path: "/",
-          element: <HomePage />,
-        },
         {
           path: "/home",
           element: <HomePage />,
@@ -140,7 +172,27 @@ function App() {
         },
         {
           path: "/login",
-          element: <UserLogin />,
+          element: <UserLogin getUserData={getUserData} />,
+        },
+        {
+          path: "/profile",
+          element: (
+            <ProtectedRoute // this path can access and render <UserProfile /> conditionally with the logic inside the ProtectedRoute
+              isUserDataLoading={isUserDataLoading}
+              isAuthenticated={isAuthenticated}
+              element={<UserProfile />}
+            />
+          ),
+        },
+        {
+          path: "/dashboard",
+          element: (
+            <ProtectedRoute // this path can access and render <UserProfile /> conditionally with the logic inside the ProtectedRoute
+              isUserDataLoading={isUserDataLoading}
+              isAuthenticated={isAuthenticated}
+              element={<Dashboard />}
+            />
+          ),
         },
         {
           path: "*",
