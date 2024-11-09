@@ -133,10 +133,10 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <LayOut wishList={wishList} />,
+      element: <LayOut wishList={wishList} isAuthenticated={isAuthenticated} />,
       children: [
         {
-          path: "/home",
+          path: "/",
           element: <HomePage />,
         },
         {
@@ -191,7 +191,7 @@ function App() {
         {
           path: "/dashboard",
           element: (
-            <ProtectedRoute // this path can access and render <UserProfile /> conditionally with the logic inside the ProtectedRoute
+            <ProtectedRoute
               isUserDataLoading={isUserDataLoading}
               isAuthenticated={isAuthenticated}
               element={<Dashboard />}

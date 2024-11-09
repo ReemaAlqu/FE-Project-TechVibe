@@ -6,13 +6,16 @@ import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonIcon from "@mui/icons-material/Person";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 import "./NavBar.css";
 import myLogo from "../../images/myLogo.png";
+import { DisplaySettings } from "@mui/icons-material";
 
 export default function NavBar(prop) {
-  const { wishList } = prop;
+  const { wishList, isAuthenticated } = prop;
   const arrayLength = wishList.length;
+
   return (
     <div className="NavBar-section">
       <div className="header_logo">
@@ -39,9 +42,27 @@ export default function NavBar(prop) {
             </Link>
           </Badge>
 
-          <Link to="/login">
-            <PersonIcon sx={{ color: "white" }} />
-          </Link>
+          {/* For the User  */}
+          {isAuthenticated ? (
+            <Link to="/profile">
+              <PersonIcon sx={{ color: "white" }} />
+            </Link>
+          ) : (
+            <Link to="/login">
+              <PersonIcon sx={{ color: "white" }} />
+            </Link>
+          )}
+
+          {/*********************************************************************************************** */}
+
+          {/* For the admin */}
+          {isAuthenticated ? (
+            <Link to="/dashboard">
+              <DashboardIcon sx={{ color: "white" }} />
+            </Link>
+          ) : (
+            <p style={{ display: "none" }}>nothing</p>
+          )}
         </ul>
       </nav>
     </div>

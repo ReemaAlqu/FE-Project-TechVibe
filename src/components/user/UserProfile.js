@@ -61,7 +61,8 @@ export default function UserProfile(prop) {
 
   return (
     <div>
-      <h1>UserProfile</h1>
+      <h1>Welcome {userData.name} !</h1>
+      <h3>UserProfile Page</h3>
       <p>Name: {userData.name}</p>
       <p>Email: {userData.emailAddress}</p>
       <p>Role: {userData.userRole}</p>
