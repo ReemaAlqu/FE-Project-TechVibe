@@ -105,6 +105,8 @@ function App() {
     getUserData();
   }, []);
 
+  console.log(userData, "from App");
+
   // protected route
   let isAuthenticated = userData ? true : false;
 
@@ -180,7 +182,9 @@ function App() {
             <ProtectedRoute // this path can access and render <UserProfile /> conditionally with the logic inside the ProtectedRoute
               isUserDataLoading={isUserDataLoading}
               isAuthenticated={isAuthenticated}
-              element={<UserProfile />}
+              element={
+                <UserProfile userData={userData} setUserData={setUserData} />
+              }
             />
           ),
         },

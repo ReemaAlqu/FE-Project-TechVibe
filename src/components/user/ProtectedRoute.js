@@ -4,7 +4,7 @@ import LinearProgress from "@mui/material/LinearProgress";
 import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute(prop) {
-  const { isUserDataLoading, isAuthenticated, element } = prop;
+  const { isUserDataLoading, isAuthenticated, element, userData } = prop;
 
   if (isUserDataLoading === true) {
     return (
