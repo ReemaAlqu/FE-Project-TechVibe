@@ -1,7 +1,15 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function DashBoard() {
   return (
-    <div>DashBoard</div>
-  )
+    <div>
+      <h1>DashBoard</h1>
+
+      <Link to="/product-dashboard">Products</Link>
+
+      <p>Users</p>
+      <p>Orders</p>
+    </div>
+  );
 }

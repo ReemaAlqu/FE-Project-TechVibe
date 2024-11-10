@@ -18,6 +18,9 @@ import UserLogin from "./components/user/UserLogin";
 import UserProfile from "./components/user/UserProfile";
 import ProtectedRoute from "./components/user/ProtectedRoute";
 import Dashboard from "./components/dashBoard/DashBoard";
+import ProductDashboard from "./components/dashBoard/ProductDashboard";
+import UserDashboard from "./components/dashBoard/UserDashboard";
+import OrderDashboard from "./components/dashBoard/OrderDashboard";
 
 function App() {
   // States
@@ -133,7 +136,13 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <LayOut wishList={wishList} isAuthenticated={isAuthenticated} />,
+      element: (
+        <LayOut
+          wishList={wishList}
+          isAuthenticated={isAuthenticated}
+          userData={userData}
+        />
+      ),
       children: [
         {
           path: "/",
@@ -194,7 +203,50 @@ function App() {
             <ProtectedRoute
               isUserDataLoading={isUserDataLoading}
               isAuthenticated={isAuthenticated}
+              shouldCheckAdmin={true}
+              userData={userData}
               element={<Dashboard />}
+            />
+          ),
+        },
+        {
+          path: "/product-dashboard",
+          element: (
+            <ProtectedRoute
+              isUserDataLoading={isUserDataLoading}
+              isAuthenticated={isAuthenticated}
+              shouldCheckAdmin={true}
+              userData={userData}
+              element={
+                <ProductDashboard
+                  // productList={productResponse.products}
+                  // loading={loading}
+                />
+              }
+            />
+          ),
+        },
+        {
+          path: "/user-dashboard",
+          element: (
+            <ProtectedRoute
+              isUserDataLoading={isUserDataLoading}
+              isAuthenticated={isAuthenticated}
+              shouldCheckAdmin={true}
+              userData={userData}
+              element={<UserDashboard />}
+            />
+          ),
+        },
+        {
+          path: "/order-dashboard",
+          element: (
+            <ProtectedRoute
+              isUserDataLoading={isUserDataLoading}
+              isAuthenticated={isAuthenticated}
+              shouldCheckAdmin={true}
+              userData={userData}
+              element={<OrderDashboard />}
             />
           ),
         },

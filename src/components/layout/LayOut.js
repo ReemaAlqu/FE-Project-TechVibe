@@ -6,10 +6,14 @@ import { Outlet } from "react-router-dom";
 import "./LayOut.css"
 
 export default function LayOut(prop) {
-  const { wishList, isAuthenticated } = prop;
+  const { wishList, isAuthenticated, userData } = prop;
   return (
     <div className="layout">
-      <NavBar wishList={wishList} isAuthenticated={isAuthenticated} />
+      <NavBar
+        wishList={wishList}
+        isAuthenticated={isAuthenticated}
+        userData={userData}
+      />
       <Outlet />
       <Footer />
     </div>

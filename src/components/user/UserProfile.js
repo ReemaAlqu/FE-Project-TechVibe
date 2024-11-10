@@ -65,7 +65,6 @@ export default function UserProfile(prop) {
       <h3>UserProfile Page</h3>
       <p>Name: {userData.name}</p>
       <p>Email: {userData.emailAddress}</p>
-      <p>Role: {userData.userRole}</p>
       <p>Phone number: {userData.phone}</p>
 
       <Button

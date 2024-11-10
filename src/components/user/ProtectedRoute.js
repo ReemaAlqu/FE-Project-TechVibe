@@ -4,12 +4,18 @@ import LinearProgress from "@mui/material/LinearProgress";
 import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute(prop) {
-  const { isUserDataLoading, isAuthenticated, element, userData } = prop;
+  const {
+    isUserDataLoading,
+    isAuthenticated,
+    element,
+    userData,
+    shouldCheckAdmin,
+    //productList,
+  } = prop;
 
   if (isUserDataLoading === true) {
     return (
       <div>
-        {/* <h1>Loading ..... </h1> */}
         <Box sx={{ width: "100%" }}>
           <LinearProgress />
         </Box>
@@ -17,7 +23,12 @@ export default function ProtectedRoute(prop) {
     );
   }
 
-  // if: isAuthenticated is true render element = <UserProfile /> page
-  // else : user dosent login (No token) => navigate to <UserLogin /> page
+  /*  check if the user LogIn + role = admin  */
+  if (shouldCheckAdmin) {
+    return isAuthenticated && userData.userRole === "Admin"? element : <Navigate to="/login" />;
+  }
+  /*  check if the user LogIn only or not  */
+  // if: isAuthenticated is true ,user login  => render element <UserProfile /> page
+  // else : isAuthenticated is false, user dosent login (No token) => navigate to <UserLogin /> page
   return isAuthenticated ? element : <Navigate to="/login" />;
 }

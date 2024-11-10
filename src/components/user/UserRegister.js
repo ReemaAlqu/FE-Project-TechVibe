@@ -15,7 +15,6 @@ export default function UserRegister() {
     setUerInfo({ ...userInfo, [event.target.id]: event.target.value });
   }
 
-  // name: X     / email: X@gmail.com  / password: Xx@12345678
   // navigate
   const navigate = useNavigate();
   function registerNewUser() {

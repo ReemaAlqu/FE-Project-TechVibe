@@ -13,7 +13,7 @@ import myLogo from "../../images/myLogo.png";
 import { DisplaySettings } from "@mui/icons-material";
 
 export default function NavBar(prop) {
-  const { wishList, isAuthenticated } = prop;
+  const { wishList, isAuthenticated, userData } = prop;
   const arrayLength = wishList.length;
 
   return (
@@ -56,7 +56,7 @@ export default function NavBar(prop) {
           {/*********************************************************************************************** */}
 
           {/* For the admin */}
-          {isAuthenticated ? (
+          {isAuthenticated && userData.userRole === "Admin" ? (
             <Link to="/dashboard">
               <DashboardIcon sx={{ color: "white" }} />
             </Link>
