@@ -10,7 +10,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 
 import "./NavBar.css";
 import myLogo from "../../images/myLogo.png";
-import { DisplaySettings } from "@mui/icons-material";
+
 
 export default function NavBar(prop) {
   const { wishList, isAuthenticated, userData } = prop;

@@ -15,6 +15,8 @@ export default function ProductsPage(prop) {
     handleChange,
     setMinPrice,
     setMaxPrice,
+    cartList,
+    setCartList,
   } = prop;
 
   return (
@@ -29,6 +31,8 @@ export default function ProductsPage(prop) {
         totalCount={totalCount}
         page={page}
         handleChange={handleChange}
+        cartList={cartList}
+        setCartList={setCartList}
       />
     </div>
   );

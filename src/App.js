@@ -38,6 +38,7 @@ function App() {
   const [wishList, setWishList] = useState([]);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(10000);
+  const [cartList, setCartList] = useState([]);
 
   // ***********************************************************************************
   // const url = "https://fakestoreapi.com/products"; the old URL for fake api
@@ -108,7 +109,7 @@ function App() {
     getUserData();
   }, []);
 
-  console.log(userData, "from App");
+  console.log(userData, "user data from App");
 
   // protected route
   let isAuthenticated = userData ? true : false;
@@ -145,7 +146,7 @@ function App() {
       ),
       children: [
         {
-          path: "/",
+          path: "/home",
           element: <HomePage />,
         },
         {
@@ -162,6 +163,8 @@ function App() {
               handleChange={handleChange}
               setMinPrice={setMinPrice}
               setMaxPrice={setMaxPrice}
+              cartList={cartList}
+              setCartList={setCartList}
             />
           ),
         },
@@ -171,7 +174,13 @@ function App() {
         },
         {
           path: "/cart",
-          element: <CartPage />,
+          element: (
+            <CartPage
+              cartList={cartList}
+              setCartList={setCartList}
+              userData={userData}
+            />
+          ),
         },
         {
           path: "/wish-list",
@@ -219,8 +228,8 @@ function App() {
               userData={userData}
               element={
                 <ProductDashboard
-                  // productList={productResponse.products}
-                  // loading={loading}
+                // productList={productResponse.products}
+                // loading={loading}
                 />
               }
             />

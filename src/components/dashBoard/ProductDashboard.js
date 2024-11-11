@@ -56,6 +56,7 @@ export default function ProductDashboard() {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+ 
 
   // fetch category
 
@@ -118,6 +119,8 @@ export default function ProductDashboard() {
       });
   }
 
+ 
+
   if (loading === true) {
     return (
       <div>
@@ -143,6 +146,7 @@ export default function ProductDashboard() {
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
         Create new product
       </Button>
+
       <Popover
         id={id}
         open={open}
@@ -216,6 +220,9 @@ export default function ProductDashboard() {
           Add product
         </Button>
       </Popover>
+
+
+
 
       <h1>List of products</h1>
       <div>

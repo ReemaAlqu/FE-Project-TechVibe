@@ -12,6 +12,8 @@ export default function Products(prop) {
     totalCount,
     page,
     handleChange,
+    cartList,
+    setCartList,
   } = prop;
 
   return (
@@ -24,6 +26,8 @@ export default function Products(prop) {
               product={product}
               wishList={wishList}
               setWishList={setWishList}
+              cartList={cartList}
+              setCartList={setCartList}
             />
           );
         })}
