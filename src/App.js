@@ -21,6 +21,7 @@ import Dashboard from "./components/dashBoard/DashBoard";
 import ProductDashboard from "./components/dashBoard/ProductDashboard";
 import UserDashboard from "./components/dashBoard/UserDashboard";
 import OrderDashboard from "./components/dashBoard/OrderDashboard";
+import UserOrderHistory from "./components/order/UserOrderHistory";
 
 function App() {
   // States
@@ -114,7 +115,7 @@ function App() {
   // protected route
   let isAuthenticated = userData ? true : false;
 
-  if (loading === true) {
+  if (loading || isUserDataLoading) {
     return (
       <div>
         {/* <h1>Loading ..... </h1> */}
@@ -206,6 +207,11 @@ function App() {
             />
           ),
         },
+        {
+          path: "/orders",
+          element: <UserOrderHistory userData={userData} />,
+        },
+
         {
           path: "/dashboard",
           element: (

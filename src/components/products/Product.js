@@ -13,7 +13,7 @@ export default function Product(prop) {
   // state for changing color
   const [isFav, setIsFav] = useState(false);
   // state for showing message/notifaction
-  const [open, setOpen] = useState(false);
+  const [openFavMessage, setOpenFavMessage] = useState(false);
 
   function addToFav(product) {
     const isInclude = wishList.some((item) => item.id === product.id);
@@ -21,23 +21,43 @@ export default function Product(prop) {
     if (!isInclude) {
       setWishList([...wishList, product]);
       setIsFav(true);
-      setOpen(true);
+      setOpenFavMessage(true);
     }
   }
-
-  // Add to cart fumction
-  function addToCart(product) {
-    // add quantity=> key & inatial value= 1  in product for the Cart only .
-    setCartList([...cartList, { ...product, quantity: 1 }]);
-  }
-  console.log(cartList, "Cart ...");
-
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
 
-    setOpen(false);
+    setOpenFavMessage(false);
+  };
+
+  //************************************************************************************************* */
+
+  // state for changing color
+  const [inCart, setInCart] = useState(false);
+  // state for showing message/notifaction
+  const [openCarttMessage, setOpenCartMessage] = useState(false);
+
+  // Add to cart function
+  function addToCart(product) {
+    const isInclude = cartList.some((item) => item.id === product.id);
+
+    if (!isInclude) {
+      // add quantity=> key & inatial value= 1  in product for the Cart only .
+      setCartList([...cartList, { ...product, quantity: 1 }]);
+      setInCart(true);
+      setOpenCartMessage(true);
+    }
+  }
+  console.log(cartList, "Cart ...");
+
+  const handleCloseForCart = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenCartMessage(false);
   };
 
   return (
@@ -57,7 +77,13 @@ export default function Product(prop) {
 
       <ShoppingCartIcon
         onClick={() => addToCart(product)}
-        sx={{ color: "grey" }}
+        sx={{ color: inCart ? "blue" : "grey" }}
+      />
+      <Snackbar
+        open={openCarttMessage}
+        autoHideDuration={3000}
+        onClose={handleCloseForCart}
+        message={`The ( ${product.name} ) has been added to the cart`}
       />
 
       <FavoriteIcon
@@ -66,7 +92,7 @@ export default function Product(prop) {
       />
 
       <Snackbar
-        open={open}
+        open={openFavMessage}
         autoHideDuration={3000}
         onClose={handleClose}
         message={`The ( ${product.name} ) has been added to favorites`}

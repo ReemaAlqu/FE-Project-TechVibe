@@ -31,6 +31,7 @@ export default function Cart(prop) {
   }
 
   // delete product from cart list
+  // with filter we will keep the product that dont match with the condition
   function removeProduct(cart) {
     setCartList(cartList.filter((cartItem) => cartItem.id !== cart.id));
   }

@@ -11,7 +11,6 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import "./NavBar.css";
 import myLogo from "../../images/myLogo.png";
 
-
 export default function NavBar(prop) {
   const { wishList, isAuthenticated, userData } = prop;
   const arrayLength = wishList.length;
@@ -31,10 +30,11 @@ export default function NavBar(prop) {
           <Link to="/products">
             <DevicesOtherIcon sx={{ color: "white" }} />
           </Link>
-
-          <Link to="/cart">
-            <ShoppingCartIcon sx={{ color: "white" }} />
-          </Link>
+          <Badge badgeContent={arrayLength} color="primary">
+            <Link to="/cart">
+              <ShoppingCartIcon sx={{ color: "white" }} />
+            </Link>
+          </Badge>
 
           <Badge badgeContent={arrayLength} color="primary">
             <Link to="/wish-list">

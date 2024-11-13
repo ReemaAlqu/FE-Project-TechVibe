@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Popover from "@mui/material/Popover";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function UserProfile(prop) {
   const { userData, setUserData } = prop;
@@ -79,6 +80,19 @@ export default function UserProfile(prop) {
       >
         Edit info
       </Button>
+
+      <Link to={"/orders"}>
+        <Button
+          variant="contained"
+          style={{
+            color: "black",
+            borderColor: "black",
+            backgroundColor: "white ",
+          }}
+        >
+          Order History
+        </Button>
+      </Link>
 
       <Button
         aria-describedby={id}
