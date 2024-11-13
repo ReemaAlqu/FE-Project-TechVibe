@@ -61,7 +61,7 @@ export default function CartList(prop) {
         }
       )
       .then((response) => {
-        console.log(response, "this is from order list ...");
+      
 
         if (response.status === 200) {
           alert("Order is created successfully");

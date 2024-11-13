@@ -41,7 +41,7 @@ export default function ProductDashboard() {
     fetchData();
   }, []);
 
-  console.log(productResponse.products, "products from dash board");
+ 
 
   // create product ( Popover from MUI)
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -80,7 +80,7 @@ export default function ProductDashboard() {
     fetchCategory();
   }, []);
 
-  console.log(categoryList, "this is the Category List ");
+ 
 
   // get information from the Form
   const [productInfo, setProductInfo] = useState({
@@ -92,11 +92,11 @@ export default function ProductDashboard() {
   });
 
   function onChangeHandler(event) {
-    console.log(event, " this is the event");
+ 
     setProductInfo({ ...productInfo, [event.target.name]: event.target.value });
   }
 
-  console.log(productInfo, "this is the product info ");
+ 
 
   function createProduct() {
     const token = localStorage.getItem("token");
@@ -108,7 +108,7 @@ export default function ProductDashboard() {
         },
       })
       .then((response) => {
-        console.log(response);
+       
         if (response.status === 201) {
           alert("product is Created successfully");
           fetchData();

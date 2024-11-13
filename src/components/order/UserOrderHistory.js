@@ -30,11 +30,13 @@ export default function UserOrderHistory(prop) {
     getOrderByUserId();
   }, []);
 
-  console.log(orderList, "order List");
+  console.log(orderList, "order List from order history");
 
   if (orderList.length === 0) {
     return <div>No order history yet</div>;
   }
+
+
 
   return (
     <div className="order-list-container">

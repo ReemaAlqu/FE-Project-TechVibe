@@ -50,7 +50,6 @@ export default function Product(prop) {
       setOpenCartMessage(true);
     }
   }
-  console.log(cartList, "Cart ...");
 
   const handleCloseForCart = (event, reason) => {
     if (reason === "clickaway") {

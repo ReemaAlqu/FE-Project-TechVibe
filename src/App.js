@@ -220,7 +220,7 @@ function App() {
               isAuthenticated={isAuthenticated}
               shouldCheckAdmin={true}
               userData={userData}
-              element={<Dashboard />}
+              element={<Dashboard userData={userData} />}
             />
           ),
         },
@@ -232,12 +232,7 @@ function App() {
               isAuthenticated={isAuthenticated}
               shouldCheckAdmin={true}
               userData={userData}
-              element={
-                <ProductDashboard
-                // productList={productResponse.products}
-                // loading={loading}
-                />
-              }
+              element={<ProductDashboard />}
             />
           ),
         },
@@ -261,7 +256,7 @@ function App() {
               isAuthenticated={isAuthenticated}
               shouldCheckAdmin={true}
               userData={userData}
-              element={<OrderDashboard />}
+              element={<OrderDashboard userData={userData} />}
             />
           ),
         },

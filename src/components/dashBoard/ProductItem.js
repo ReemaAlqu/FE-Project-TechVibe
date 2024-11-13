@@ -17,7 +17,7 @@ export default function ProductItem(prop) {
         },
       })
       .then((response) => {
-        console.log(response);
+     
         if (response.status === 204) {
           alert("a product is deleted successfully");
           fetchData();
@@ -53,7 +53,7 @@ export default function ProductItem(prop) {
       [event.target.name]: event.target.value,
     });
   }
-  console.log(productEditInfo, "This for edit info ");
+ 
 
   function editProductInfo() {
     const token = localStorage.getItem("token");
@@ -73,7 +73,7 @@ export default function ProductItem(prop) {
         }
       )
       .then((response) => {
-        console.log(response, "Respon Edit");
+        
         if (response.status === 200) {
           alert("product is Updated successfully");
           fetchData();

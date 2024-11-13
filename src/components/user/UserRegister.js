@@ -23,7 +23,6 @@ export default function UserRegister() {
     axios
       .post(userUrl, userInfo)
       .then((response) => {
-        console.log(response, "This is the response from Post method");
         if (response.status === 201) {
           navigate("/login");
         }
