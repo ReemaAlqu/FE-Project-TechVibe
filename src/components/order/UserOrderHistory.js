@@ -30,17 +30,13 @@ export default function UserOrderHistory(prop) {
     getOrderByUserId();
   }, []);
 
-  console.log(orderList, "order List from order history");
-
   if (orderList.length === 0) {
     return <div>No order history yet</div>;
   }
 
-
-
   return (
     <div className="order-list-container">
-      <h1>UserOrderHistory</h1>
+      <h1>Order History</h1>
       <div className="order-list">
         {orderList.map((order) => {
           return <OrderItem key={order.id} order={order} />;

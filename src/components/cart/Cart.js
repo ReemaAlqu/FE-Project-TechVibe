@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Card, CardContent } from "@mui/material";
 
 export default function Cart(prop) {
   const { cart, cartList, setCartList } = prop;
@@ -37,33 +38,45 @@ export default function Cart(prop) {
   }
 
   return (
-    <div>
-      <div>
-        Name: {cart.name} (${cart.price})
-      </div>
-      <img src={cart.imageUrl} alt={cart.name} />
+    <Card sx={{ width: "400px", marginTop: "20px", padding: "5px" }}>
+      <CardContent>
+        <div>
+          Name: {cart.name} (${cart.price})
+        </div>
+        <img src={cart.imageUrl} alt={cart.name} />
 
-      <div>
-        Quantity: ( {cart.quantity} ){"   "}
-        <Button
-          variant="contained"
-          style={{ color: "white", background: "black" }}
-          onClick={() => decreaseroductQuantity(cart.id)}
-        >
-          -
-        </Button>
-        <Button
-          variant="contained"
-          style={{ color: "white", background: "black" }}
-          onClick={() => increaseProductQuantity(cart.id)}
-        >
-          +
-        </Button>
-      </div>
-
-      <DeleteIcon sx={{ color: "Red" }} onClick={() => removeProduct(cart)} />
-
-      <br />
-    </div>
+        <div>
+          Quantity: ( {cart.quantity} ){"   "}
+          <Button
+            variant="contained"
+            style={{
+              color: "white",
+              background: "black",
+              width: "5px",
+              height: "20px",
+            }}
+            onClick={() => decreaseroductQuantity(cart.id)}
+          >
+            -
+          </Button>{" "}
+          <Button
+            variant="contained"
+            style={{
+              color: "white",
+              background: "black",
+              width: "5px",
+              height: "20px",
+            }}
+            onClick={() => increaseProductQuantity(cart.id)}
+          >
+            +
+          </Button>{" "}
+          <DeleteIcon
+            sx={{ color: "Red" }}
+            onClick={() => removeProduct(cart)}
+          />
+        </div>
+      </CardContent>
+    </Card>
   );
 }

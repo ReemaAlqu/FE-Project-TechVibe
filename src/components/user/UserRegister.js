@@ -3,6 +3,9 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Card, CardContent } from "@mui/material";
+import "./UserRegister.css";
+
 
 export default function UserRegister() {
   const [userInfo, setUerInfo] = useState({
@@ -49,39 +52,43 @@ export default function UserRegister() {
   }
 
   return (
-    <div>
-      <h1>UserRegister</h1>
-      <TextField
-        id="name"
-        label="Your Name:"
-        variant="standard"
-        onChange={onChangeHandler}
-      />
-      <br />
+    <div className="user-register-container">
+      <h1>Sign up to get started !</h1>
+      <Card sx={{ width: "400px", marginTop: "20px", padding: "5px" }}>
+        <CardContent>
+          <TextField
+            id="name"
+            label="Your Name:"
+            variant="standard"
+            onChange={onChangeHandler}
+          />
+          <br />
 
-      <TextField
-        id="emailAddress"
-        label="Your Email:"
-        variant="standard"
-        onChange={onChangeHandler}
-      />
-      <br />
+          <TextField
+            id="emailAddress"
+            label="Your Email:"
+            variant="standard"
+            onChange={onChangeHandler}
+          />
+          <br />
 
-      <TextField
-        id="password"
-        label="Your Password:"
-        variant="standard"
-        onChange={onChangeHandler}
-      />
-      <br />
+          <TextField
+            id="password"
+            label="Your Password:"
+            variant="standard"
+            onChange={onChangeHandler}
+          />
+          <br />
 
-      <Button
-        variant="outlined"
-        style={{ color: "black", borderColor: "black" }}
-        onClick={registerNewUser}
-      >
-        Register
-      </Button>
+          <Button
+            variant="outlined"
+            style={{ color: "black", borderColor: "black" }}
+            onClick={registerNewUser}
+          >
+            Register
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   );
 }

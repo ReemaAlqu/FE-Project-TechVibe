@@ -1,0 +1,16 @@
+.order-list-dashbord-container{
+        display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+}
+
+
+
+
+.order-list-dashbord {
+    text-align: center;
+    
+
+}

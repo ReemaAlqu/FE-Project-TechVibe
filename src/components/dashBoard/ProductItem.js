@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Popover from "@mui/material/Popover";
 import axios from "axios";
-
+import { Card, CardContent } from "@mui/material";
 export default function ProductItem(prop) {
   const { product, fetchData } = prop;
 
@@ -85,77 +85,93 @@ export default function ProductItem(prop) {
   }
 
   return (
-    <div key={product.id}>
-      <div>
-        Name: {product.name} - price: (${product.price})
-      </div>
-      <p>Description: {product.description}</p>
-      <p>Category: {product.category.name}</p>
-      <img src={product.imageUrl} alt={product.name} />
-      <br />
-      <Button
-        variant="outlined"
-        style={{ color: "black", borderColor: "black" }}
-        onClick={deleteProductById}
-      >
-        Delete
-      </Button>
+    <Card sx={{ width: "400px", marginTop: "20px", padding: "5px" }}>
+      <CardContent>
+        <div key={product.id}>
+          <div>
+            Name: {product.name} - price: (${product.price})
+          </div>
+          <p>Description: {product.description}</p>
+          <p>Category: {product.category.name}</p>
+          <img src={product.imageUrl} alt={product.name} />
+          <br />
+          <Button
+            variant="outlined"
+            style={{
+              color: "red",
+              borderColor: "black",
+              width: "5px",
+              height: "20px",
+            }}
+            onClick={deleteProductById}
+          >
+            Delete
+          </Button>
+          {" "}
 
-      <Button
-        aria-describedby={idEditProduct}
-        variant="contained"
-        onClick={handleClickEditProduct}
-      >
-        Edit product
-      </Button>
+          <Button
+            aria-describedby={idEditProduct}
+            variant="outlined"
+            style={{
+              color: "black",
+              borderColor: "black",
+              width: "140px",
+              height: "20px",
+            }}
+            onClick={handleClickEditProduct}
+          >
+            Edit product
+          </Button>
 
-      <Popover
-        id={idEditProduct}
-        open={openEditButten}
-        anchorEl={anchorElEdit}
-        onClose={handleCloseEditProduct}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-      >
-        <TextField
-          name="nameEdit"
-          label="Edit Name"
-          variant="standard"
-          helperText="Please enter the new product name "
-          onChange={onChangeHandlerEdit}
-        />
-        <br />
+          <Popover
+            id={idEditProduct}
+            open={openEditButten}
+            anchorEl={anchorElEdit}
+            onClose={handleCloseEditProduct}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+          >
+            <TextField
+              name="nameEdit"
+              label="Edit Name"
+              variant="standard"
+              helperText="Please enter the new product name "
+              onChange={onChangeHandlerEdit}
+            />
+            <br />
 
-        <TextField
-          name="priceEdit"
-          label="Edit Price"
-          variant="standard"
-          helperText="Please enter the new product price "
-          onChange={onChangeHandlerEdit}
-        />
-        <br />
+            <TextField
+              name="priceEdit"
+              label="Edit Price"
+              variant="standard"
+              helperText="Please enter the new product price "
+              onChange={onChangeHandlerEdit}
+            />
+            <br />
 
-        <TextField
-          name="descriptionEdit"
-          label="Edit Description"
-          variant="standard"
-          helperText="Please enter the new product description "
-          onChange={onChangeHandlerEdit}
-        />
-        <br />
+            <TextField
+              name="descriptionEdit"
+              label="Edit Description"
+              variant="standard"
+              helperText="Please enter the new product description "
+              onChange={onChangeHandlerEdit}
+            />
+            <br />
 
-        <Button
-          variant="outlined"
-          style={{ color: "black", borderColor: "black" }}
-          onClick={editProductInfo}
-        >
-          Edit Product
-        </Button>
-      </Popover>
+            <Button
+              variant="outlined"
+              style={{ color: "black", borderColor: "black" }}
+              onClick={editProductInfo}
+            >
+              Edit Product
+            </Button>
+          </Popover>
 
-      <br />
-    </div>
+          <br />
+        </div>
+      </CardContent>
+    </Card>
   );
 }

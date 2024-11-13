@@ -3,11 +3,11 @@ import Button from "@mui/material/Button";
 import Popover from "@mui/material/Popover";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import "./UserProfile.css";
+import { Card, CardContent } from "@mui/material";
 
 export default function UserProfile(prop) {
   const { userData, setUserData } = prop;
-  console.log(userData, " userData from Profile");
 
   // popover from MUI
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -61,83 +61,74 @@ export default function UserProfile(prop) {
   }
 
   return (
-    <div>
-      <h1>Welcome {userData.name} !</h1>
-      <h3>UserProfile Page</h3>
-      <p>Name: {userData.name}</p>
-      <p>Email: {userData.emailAddress}</p>
-      <p>Phone number: {userData.phone}</p>
+    <div className="user-profile-container">
+      <h2>Hi {userData.name} ! , Welcome to your profile</h2>
+      <h4>you can view and update your personal information here.</h4>
 
-      <Button
-        aria-describedby={id}
-        variant="contained"
-        onClick={handleClick}
-        style={{
-          color: "black",
-          borderColor: "black",
-          backgroundColor: "white ",
-        }}
-      >
-        Edit info
-      </Button>
+      <Card sx={{ width: "400px", marginTop: "20px", padding: "5px" }}>
+        <CardContent>
+          <p>Name: {userData.name}</p>
+          <p>Email: {userData.emailAddress}</p>
 
-      <Link to={"/orders"}>
-        <Button
-          variant="contained"
-          style={{
-            color: "black",
-            borderColor: "black",
-            backgroundColor: "white ",
-          }}
-        >
-          Order History
-        </Button>
-      </Link>
+          <div>
+            <Button
+              aria-describedby={id}
+              variant="contained"
+              onClick={handleClick}
+              style={{
+                color: "white",
+                borderColor: "black",
+                backgroundColor: "black ",
+              }}
+            >
+              Edit info
+            </Button>{" "}
+            <Button
+              aria-describedby={id}
+              variant="contained"
+              onClick={logOutHandler}
+              style={{
+                color: "white",
+                borderColor: "black",
+                backgroundColor: "black ",
+              }}
+            >
+              Log out
+            </Button>
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+            >
+              <TextField
+                id="name"
+                label="Name:"
+                variant="standard"
+                helperText="Please enter your (new) name "
+                onChange={onChangeHandlerName}
+              />
 
-      <Button
-        aria-describedby={id}
-        variant="contained"
-        onClick={logOutHandler}
-        style={{
-          color: "black",
-          borderColor: "black",
-          backgroundColor: "white ",
-        }}
-      >
-        Log out
-      </Button>
-
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-      >
-        <TextField
-          id="name"
-          label="Name:"
-          variant="standard"
-          helperText="Please enter your (new) name "
-          onChange={onChangeHandlerName}
-        />
-
-        <Button
-          aria-describedby={id}
-          variant="contained"
-          onClick={updateUserProfile}
-          style={{
-            color: "white",
-            borderColor: "black",
-            backgroundColor: "black ",
-          }}
-        >
-          Done
-        </Button>
-      </Popover>
+              <Button
+                aria-describedby={id}
+                variant="contained"
+                onClick={updateUserProfile}
+                style={{
+                  color: "white",
+                  borderColor: "black",
+                  backgroundColor: "black ",
+                }}
+              >
+                Done
+              </Button>
+            </Popover>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }

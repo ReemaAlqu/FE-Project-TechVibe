@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 
 import Cart from "./Cart";
+import "./Cart.css";
 
 export default function CartList(prop) {
   const { cartList, setCartList, userData } = prop;
@@ -12,14 +13,14 @@ export default function CartList(prop) {
 
   if (cartList.length === 0) {
     return (
-      <div>
-        <h1>Cart is empty</h1>
+      <div className="cart-container">
+        <h1> Your cart is empty.</h1>
         <Link to="/products">
           <Button
             variant="outlined"
             style={{ color: "black", borderColor: "black" }}
           >
-            Let's go and shop now !
+            Click here to start shopping!
           </Button>
         </Link>
       </div>
@@ -61,8 +62,6 @@ export default function CartList(prop) {
         }
       )
       .then((response) => {
-      
-
         if (response.status === 200) {
           alert("Order is created successfully");
           navigate("/products");
@@ -75,19 +74,19 @@ export default function CartList(prop) {
   }
 
   return (
-    <div>
-      <h1>CartList</h1>
-
-      {cartList.map((cart) => {
-        return (
-          <Cart
-            key={cart.id}
-            cart={cart}
-            cartList={cartList}
-            setCartList={setCartList}
-          />
-        );
-      })}
+    <div className="cart-container">
+      <div className="cart-item">
+        {cartList.map((cart) => {
+          return (
+            <Cart
+              key={cart.id}
+              cart={cart}
+              cartList={cartList}
+              setCartList={setCartList}
+            />
+          );
+        })}
+      </div>
 
       <p>Total price: $ {totalPrice}</p>
 

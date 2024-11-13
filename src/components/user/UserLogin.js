@@ -9,7 +9,10 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import { Card, CardContent } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+
+import "./UserLogin.css";
 
 export default function UserLogin(prop) {
   const { getUserData } = prop;
@@ -48,8 +51,6 @@ export default function UserLogin(prop) {
     axios
       .post(userUrlLogIn, userLogin)
       .then((response) => {
-        console.log(response, "This is the RESPONSE from LogIn");
-
         if (response.status === 200) {
           // save to local storage
           localStorage.setItem("token", response.data);
@@ -69,12 +70,11 @@ export default function UserLogin(prop) {
   }
 
   return (
-    <div>
-      <h1>UserLogin</h1>
-      <p>Reema@gmail.com</p>
-      <p>Reema@2024</p>
-      <p>A@gmail.com</p>
-      <p>Aa@123456</p>
+    <div className="user-login-container">
+       <Card sx={{ width: "400px", marginTop: "20px", padding: "5px" }}>
+      <CardContent>
+      <h1>Log in to get started</h1>
+
       <TextField
         id="emailAddress"
         label="Your Email:"
@@ -111,23 +111,37 @@ export default function UserLogin(prop) {
 
       <Button
         variant="outlined"
-        style={{ color: "black", borderColor: "black" }}
+        style={{ color: "black", borderColor: "black", height: "30px" }}
         onClick={logInUser}
       >
         LogIn ...
       </Button>
 
       <div>
-        <h1> Dont have an account? </h1>
+        <h4> Don't have an account? </h4>
         <Link to="/register">
-          <Button
-            variant="outlined"
-            style={{ color: "black", borderColor: "black" }}
-          >
-            Create an account
-          </Button>
+          <Link to="/register">
+            <Button
+              variant="outlined"
+              style={{
+                color: "black",
+                borderColor: "black",
+                height: "30px",
+              }}
+            >
+              Click here to sign up!
+            </Button>
+          </Link>
         </Link>
       </div>
+      </CardContent>
+      </Card>
     </div>
   );
 }
+
+
+//  Reema@gmail.com
+//       Reema@2024
+//       A@gmail.com
+//       Aa@123456

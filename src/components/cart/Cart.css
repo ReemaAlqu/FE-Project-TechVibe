@@ -1,0 +1,12 @@
+.cart-container{
+    margin-top: 50px;
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+
+.cart-item{
+    text-align: center;
+    margin-top: 10px;
+}

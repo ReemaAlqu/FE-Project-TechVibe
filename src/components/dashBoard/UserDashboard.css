@@ -1,0 +1,28 @@
+/* Parent container styling */
+.user-list-dashbord-container {
+   
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Grid layout for three items per row */
+.user-list-dashbord {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    max-width: 800px;
+    justify-content: center;
+}
+
+.user-item {
+    border: 1px solid #ccc;
+    padding: 16px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    max-width: 250px;
+    margin: auto;
+}

@@ -6,7 +6,6 @@ export default function WishListPage(prop) {
 
   return (
     <div>
-      WishListPage
       <WishList wishList={wishList} />
     </div>
   );

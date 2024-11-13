@@ -11,6 +11,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import "./ProductDashboard.css";
 
 export default function ProductDashboard() {
   const [productResponse, setProductResponse] = useState({
@@ -41,8 +42,6 @@ export default function ProductDashboard() {
     fetchData();
   }, []);
 
- 
-
   // create product ( Popover from MUI)
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -56,7 +55,6 @@ export default function ProductDashboard() {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
- 
 
   // fetch category
 
@@ -80,8 +78,6 @@ export default function ProductDashboard() {
     fetchCategory();
   }, []);
 
- 
-
   // get information from the Form
   const [productInfo, setProductInfo] = useState({
     name: "",
@@ -92,11 +88,8 @@ export default function ProductDashboard() {
   });
 
   function onChangeHandler(event) {
- 
     setProductInfo({ ...productInfo, [event.target.name]: event.target.value });
   }
-
- 
 
   function createProduct() {
     const token = localStorage.getItem("token");
@@ -108,7 +101,6 @@ export default function ProductDashboard() {
         },
       })
       .then((response) => {
-       
         if (response.status === 201) {
           alert("product is Created successfully");
           fetchData();
@@ -118,8 +110,6 @@ export default function ProductDashboard() {
         console.log("error");
       });
   }
-
- 
 
   if (loading === true) {
     return (
@@ -140,101 +130,102 @@ export default function ProductDashboard() {
     );
   }
   return (
-    <div>
-      <h1>ProductDashboard</h1>
-      <p>Create new product</p>
-      <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-        Create new product
-      </Button>
-
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-      >
-        <TextField
-          name="name"
-          label="Name"
-          variant="standard"
-          helperText="Please enter the product name "
-          onChange={onChangeHandler}
-        />
-        <br />
-
-        <TextField
-          name="price"
-          label="price"
-          variant="standard"
-          helperText="Please enter the product price "
-          onChange={onChangeHandler}
-        />
-        <br />
-
-        <TextField
-          name="imageUrl"
-          label="imageUrl"
-          variant="standard"
-          helperText="Please enter the product imageUrl  "
-          onChange={onChangeHandler}
-        />
-        <br />
-
-        <TextField
-          name="description"
-          label="description"
-          variant="standard"
-          helperText="Please enter the product description "
-          onChange={onChangeHandler}
-        />
-        <br />
-
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">category id</InputLabel>
-          <Select
-            labelId="categoryId"
-            name="categoryId"
-            value={productInfo.categoryId}
-            label="categoryId"
-            onChange={onChangeHandler}
-          >
-            {categoryList.map((category) => {
-              return (
-                <MenuItem key={category.id} value={category.id}>
-                  {category.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
-
+    <div className="product-list-dashbord-container">
+      <div>
         <Button
+          aria-describedby={id}
           variant="outlined"
           style={{ color: "black", borderColor: "black" }}
-          onClick={createProduct}
+          onClick={handleClick}
         >
-          Add product
+          Create new product
         </Button>
-      </Popover>
 
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <TextField
+            name="name"
+            label="Name"
+            variant="standard"
+            helperText="Please enter the product name "
+            onChange={onChangeHandler}
+          />
+          <br />
 
+          <TextField
+            name="price"
+            label="price"
+            variant="standard"
+            helperText="Please enter the product price "
+            onChange={onChangeHandler}
+          />
+          <br />
 
+          <TextField
+            name="imageUrl"
+            label="imageUrl"
+            variant="standard"
+            helperText="Please enter the product imageUrl  "
+            onChange={onChangeHandler}
+          />
+          <br />
 
-      <h1>List of products</h1>
-      <div>
-        {productResponse.products.map((product) => {
-          return (
-            <ProductItem
-              key={product.id}
-              product={product}
-              fetchData={fetchData}
-            />
-          );
-        })}
+          <TextField
+            name="description"
+            label="description"
+            variant="standard"
+            helperText="Please enter the product description "
+            onChange={onChangeHandler}
+          />
+          <br />
+
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">category id</InputLabel>
+            <Select
+              labelId="categoryId"
+              name="categoryId"
+              value={productInfo.categoryId}
+              label="categoryId"
+              onChange={onChangeHandler}
+            >
+              {categoryList.map((category) => {
+                return (
+                  <MenuItem key={category.id} value={category.id}>
+                    {category.name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+
+          <Button
+            variant="outlined"
+            style={{ color: "black", borderColor: "black" }}
+            onClick={createProduct}
+          >
+            Add product
+          </Button>
+        </Popover>
+
+        <div className="product-list-dashbord">
+          {productResponse.products.map((product) => {
+            return (
+              <ProductItem
+                key={product.id}
+                product={product}
+                fetchData={fetchData}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
