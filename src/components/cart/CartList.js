@@ -49,7 +49,7 @@ export default function CartList(prop) {
       return;
     }
     //send request to BE to create order
-    const orderUrl = "http://localhost:5125/api/v1/Order";
+    const orderUrl = "https://be-project-techvibe.onrender.com/api/v1/Order";
 
     axios
       .post(

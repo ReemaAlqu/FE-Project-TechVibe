@@ -42,13 +42,12 @@ function App() {
   const [cartList, setCartList] = useState([]);
 
   // ***********************************************************************************
-  // const url = "https://fakestoreapi.com/products"; the old URL for fake api
-
+  
   let limit = 3;
   let offset = (page - 1) * limit;
-
+     
   function getUrl(userInput, minPrice, maxPrice) {
-    let productUrl = `http://localhost:5125/api/v1/Products?Limit=${limit}&Offset=${offset}`;
+    let productUrl = `https://be-project-techvibe.onrender.com/api/v1/Products?Limit=${limit}&Offset=${offset}`;
     if (userInput) {
       productUrl += `&search=${userInput}`;
     }
@@ -91,7 +90,7 @@ function App() {
     // token from local storage
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:5125/api/v1/User/auth", {
+      .get("https://be-project-techvibe.onrender.com/api/v1/User/auth", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

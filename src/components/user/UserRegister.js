@@ -6,7 +6,6 @@ import axios from "axios";
 import { Card, CardContent } from "@mui/material";
 import "./UserRegister.css";
 
-
 export default function UserRegister() {
   const [userInfo, setUerInfo] = useState({
     name: "",
@@ -21,7 +20,8 @@ export default function UserRegister() {
   // navigate
   const navigate = useNavigate();
   function registerNewUser() {
-    const userUrl = " http://localhost:5125/api/v1/User/signUp";
+    const userUrl =
+      "https://be-project-techvibe.onrender.com/api/v1/User/signUp";
 
     axios
       .post(userUrl, userInfo)

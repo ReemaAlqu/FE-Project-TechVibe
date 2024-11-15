@@ -13,11 +13,14 @@ export default function UserDashBoardItem(prop) {
   function deletUser() {
     const token = localStorage.getItem("token");
     axios
-      .delete(`http://localhost:5125/api/v1/User/${user.userID}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .delete(
+        `https://be-project-techvibe.onrender.com/api/v1/User/${user.userID}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         console.log(response, "this is from user dash board item");
 

@@ -15,7 +15,7 @@ export default function SingleProduct() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const ProductDetailUrl = `http://localhost:5125/api/v1/Products/${productId}`;
+  const ProductDetailUrl = `https://be-project-techvibe.onrender.com/api/v1/Products/${productId}`;
 
   useEffect(() => {
     function getData() {

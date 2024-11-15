@@ -13,7 +13,7 @@ export default function UserDashboard() {
   function getUserList() {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:5125/api/v1/User", {
+      .get("https://be-project-techvibe.onrender.com/api/v1/User", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

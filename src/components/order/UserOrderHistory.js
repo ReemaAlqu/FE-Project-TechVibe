@@ -10,7 +10,7 @@ export default function UserOrderHistory(prop) {
   //   fetch the order from BE
   function getOrderByUserId() {
     const token = localStorage.getItem("token");
-    const url = `http://localhost:5125/api/v1/Order/Users/${userData.userID}`;
+    const url = `https://be-project-techvibe.onrender.com/api/v1/Order/Users/${userData.userID}`;
 
     axios
       .get(url, {

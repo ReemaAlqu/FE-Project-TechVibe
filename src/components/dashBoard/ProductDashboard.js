@@ -24,7 +24,7 @@ export default function ProductDashboard() {
 
   function fetchData() {
     let url =
-      "http://localhost:5125/api/v1/Products?Limit=100&Offset=0&Search=&MinPrice=0&MaxPrice=10000";
+      "https://be-project-techvibe.onrender.com/api/v1/Products?Limit=100&Offset=0&Search=&MinPrice=0&MaxPrice=10000";
     axios
       .get(url)
       .then((response) => {
@@ -61,7 +61,7 @@ export default function ProductDashboard() {
   const [categoryList, setCategoryList] = useState([]);
 
   function fetchCategory() {
-    let url = "http://localhost:5125/api/v1/Category";
+    let url = "https://be-project-techvibe.onrender.com/api/v1/Category";
     axios
       .get(url)
       .then((response) => {
@@ -93,7 +93,7 @@ export default function ProductDashboard() {
 
   function createProduct() {
     const token = localStorage.getItem("token");
-    const url = "http://localhost:5125/api/v1/Products";
+    const url = "https://be-project-techvibe.onrender.com/api/v1/Products";
     axios
       .post(url, productInfo, {
         headers: {

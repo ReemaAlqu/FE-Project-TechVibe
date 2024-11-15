@@ -46,7 +46,8 @@ export default function UserLogin(prop) {
   const navigate = useNavigate();
   // onclick
   function logInUser() {
-    const userUrlLogIn = " http://localhost:5125/api/v1/User/signIn";
+    const userUrlLogIn =
+      " https://be-project-techvibe.onrender.com/api/v1/User/signIn";
 
     axios
       .post(userUrlLogIn, userLogin)

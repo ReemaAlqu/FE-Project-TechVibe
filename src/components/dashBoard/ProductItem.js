@@ -8,7 +8,7 @@ export default function ProductItem(prop) {
   const { product, fetchData } = prop;
 
   function deleteProductById() {
-    const url = `http://localhost:5125/api/v1/Products/${product.id}`;
+    const url = `https://be-project-techvibe.onrender.com/api/v1/Products/${product.id}`;
     const token = localStorage.getItem("token");
     axios
       .delete(url, {
@@ -57,7 +57,7 @@ export default function ProductItem(prop) {
 
   function editProductInfo() {
     const token = localStorage.getItem("token");
-    const url = `http://localhost:5125/api/v1/Products/${product.id}`;
+    const url = `https://be-project-techvibe.onrender.com/api/v1/Products/${product.id}`;
     axios
       .put(
         url,

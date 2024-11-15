@@ -35,7 +35,7 @@ export default function UserProfile(prop) {
     // send data to BE
     axios
       .put(
-        `http://localhost:5125/api/v1/User/${userData.userID}`,
+        `https://be-project-techvibe.onrender.com/api/v1/User/${userData.userID}`,
         {
           name: newName,
         },
