@@ -71,77 +71,73 @@ export default function UserLogin(prop) {
 
   return (
     <div className="user-login-container">
-       <Card sx={{ width: "400px", marginTop: "20px", padding: "5px" }}>
-      <CardContent>
-      <h1>Log in to get started</h1>
+      <Card sx={{ width: "400px", marginTop: "20px", padding: "5px" }}>
+        <CardContent>
+          <h1>Log in to get started</h1>
 
-      <TextField
-        id="emailAddress"
-        label="Your Email:"
-        variant="standard"
-        onChange={onChangeHandlerEmailLogin}
-      />
-      <br />
+          <TextField
+            id="emailAddress"
+            label="Your Email:"
+            variant="standard"
+            onChange={onChangeHandlerEmailLogin}
+          />
+          <br />
 
-      <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
-        <InputLabel htmlFor="standard-adornment-password">
-          Your Password:
-        </InputLabel>
-        <Input
-          id="standard-adornment-password"
-          type={showPassword ? "text" : "password"}
-          onChange={onChangeHandlerPasswordLogin}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label={
-                  showPassword ? "hide the password" : "display the password"
-                }
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                onMouseUp={handleMouseUpPassword}
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-      </FormControl>
-      <br />
+          <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
+            <InputLabel htmlFor="standard-adornment-password">
+              Your Password:
+            </InputLabel>
+            <Input
+              id="standard-adornment-password"
+              type={showPassword ? "text" : "password"}
+              onChange={onChangeHandlerPasswordLogin}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label={
+                      showPassword
+                        ? "hide the password"
+                        : "display the password"
+                    }
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    onMouseUp={handleMouseUpPassword}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+          <br />
 
-      <Button
-        variant="outlined"
-        style={{ color: "black", borderColor: "black", height: "30px" }}
-        onClick={logInUser}
-      >
-        LogIn ...
-      </Button>
+          <Button
+            variant="outlined"
+            style={{ color: "black", borderColor: "black", height: "30px" }}
+            onClick={logInUser}
+          >
+            LogIn ...
+          </Button>
 
-      <div>
-        <h4> Don't have an account? </h4>
-        <Link to="/register">
-          <Link to="/register">
-            <Button
-              variant="outlined"
-              style={{
-                color: "black",
-                borderColor: "black",
-                height: "30px",
-              }}
-            >
-              Click here to sign up!
-            </Button>
-          </Link>
-        </Link>
-      </div>
-      </CardContent>
+          <div>
+            <h4> Don't have an account? </h4>
+            <Link to="/register">
+              <Link to="/register">
+                <Button
+                  variant="outlined"
+                  style={{
+                    color: "black",
+                    borderColor: "black",
+                    height: "30px",
+                  }}
+                >
+                  Click here to sign up!
+                </Button>
+              </Link>
+            </Link>
+          </div>
+        </CardContent>
       </Card>
     </div>
   );
 }
-
-
-//  Reema@gmail.com
-//       Reema@2024
-//       A@gmail.com
-//       Aa@123456

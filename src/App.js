@@ -147,6 +147,10 @@ function App() {
       ),
       children: [
         {
+          path: "/",
+          element: <HomePage />,
+        },
+        {
           path: "/home",
           element: <HomePage />,
         },

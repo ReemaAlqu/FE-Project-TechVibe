@@ -54,7 +54,6 @@ export default function SingleProduct() {
   }
   return (
     <div>
-      <h1>SingleProductPage</h1>
       <div>
         Name: {productDetail.name} - price: (${productDetail.price})
       </div>
